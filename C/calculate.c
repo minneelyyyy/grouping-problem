@@ -42,7 +42,7 @@ struct IntArray* calculate(int n, struct IntArray* optional_provided) {
 	int grouping_size;
 
 	if (n % 2 != 0) {
-		return NULL;
+		return numbers;
 	}
 
 	if (is_prime(n / 2)) {

@@ -1,15 +1,10 @@
 import System.Environment (getArgs)
-import Text.Printf (printf)
-import Data.List (intercalate)
-
--- FOR SOME REASON forM_ IS NOT AVAILABLE TO ME??? AAAAAAAAAAAAAAAAA??
--- copy and pasted from https://hackage.haskell.org/package/base-4.18.0.0/docs/src/Data.Foldable.html#forM_
-forM_ :: (Foldable t, Monad m) => t a -> (a -> m b) -> m ()
-{-# INLINE forM_ #-}
-forM_ = flip mapM_
+import Control.Monad (forM_)
 
 calculate :: Int -> [Int]
-calculate n = [x | x <- [1..n `div` 2], n `mod` x == 0 && even (n `div` x)]    
+calculate n = 
+    if even n then [x | x <- [1..n `div` 2], n `mod` x == 0 && even (n `div` x)]
+    else []
 
 main :: IO ()
 main = do
