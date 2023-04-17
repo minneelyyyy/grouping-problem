@@ -16,6 +16,6 @@ main = do
     args <- getArgs
     let count = read $ head args :: Int
 
-    for_ [x | x <- [1..count], even x] (\i -> do
+    for_ (filter even [2..count]) (\i -> do
             putStrLn $ show i ++ ": " ++ show (calculate i)
         )
